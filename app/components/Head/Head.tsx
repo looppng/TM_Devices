@@ -5,33 +5,22 @@ const Head = () => {
     <div className="bg-[#181E34]">
       <Navbar />
       <nav
-        className="text-white flex justify-start items-center w-[82%] mx-auto pb-20 py-5"
+        className="text-white flex flex-col items-start w-[82%] mx-auto pb-20 py-5"
         aria-label="Breadcrumb"
       >
-        <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-          <li className="inline-flex items-center text-[#C5C7D3]">
-            <a
-              href="#"
-              className="inline-flex items-center text-md font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-            >
+        <div className="flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+          <span className="inline-flex items-center text-[#C5C7D3] text-md font-medium text-gray-700 dark:text-gray-400 dark:hover:text-white">
+            <a href="#" className="hover:text-blue-600">
               Home
             </a>
-          </li>
-          <li className="inline-flex items-center">
-            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-              /
-            </span>
-          </li>
-          <div>
-            <li aria-current="page">
-              <div className="flex items-center">
-                <span className="ms-1 text-lg font-medium text-gray-500 md:ms-1 dark:text-gray-400">
-                  Devices
-                </span>
-              </div>
-            </li>
-          </div>
-        </ol>
+          </span>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            /
+          </span>
+        </div>
+        <div className="mt-4">
+          <span className="text-2xl font-medium text-white">Devices</span>
+        </div>
       </nav>
     </div>
   );

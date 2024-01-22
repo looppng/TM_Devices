@@ -1,11 +1,18 @@
+"use client";
+
 import SearchForm from "@/app/components/Forms/SearchForm";
+import Image from "next/image";
+import rightarrow from "./../../../public/rightarrow.svg";
+import { useState } from "react";
 
 const Devices = () => {
+  const [hoveredDevice, setHoveredDevice] = useState(null);
+
   const devices = [
     {
       id: 1,
       name: "Main Entry Intercom",
-      status: "Offline",
+      status: "Online",
       model: "2N Verso",
       conStat: "235/235 messages over 28 days",
     },
@@ -57,8 +64,16 @@ const Devices = () => {
           <div
             key={device.id}
             className="border-2 rounded-md py-5 row flex justify-between items-center mt-2 "
+            onMouseEnter={() => setHoveredDevice(device.id)}
+            onMouseLeave={() => setHoveredDevice(null)}
           >
-            <div className="inline-flex p-3">{device.status}</div>
+            <div className="inline-flex p-3 mx-2 items-center">
+              <div
+                className={`w-4 h-4 rounded-full ${
+                  device.status === "Offline" ? "bg-red-500" : "bg-green-500"
+                }`}
+              ></div>
+            </div>
             <div className="inline-flex flex-1">
               <div className="col">
                 <div>{device.name}</div>
@@ -83,18 +98,33 @@ const Devices = () => {
                 </div>
               </div>
             </div>
-            <div className="inline-flex me-4 gap-1 items-center justify-center">
-              <button
-                type="button"
-                className="py-2.5 px-5 me-2 text-sm font-medium text-[#181E34] focus:outline-none bg-[#F0F1F4] rounded-md border border-gray-200 hover:bg-gray-100"
-              >
-                Control
-              </button>
-              <button
-                type="button"
-                className="py-2.5 px-5 me-2 text-sm font-medium text-[#181E34] focus:outline-none bg-[#F0F1F4] rounded-md border border-gray-200 hover:bg-gray-100"
-              >
-                Control
+            <div className="inline-flex flex-1 me-4 gap-1 items-center justify-end">
+              {hoveredDevice === device.id && (
+                <>
+                  <button
+                    type="button"
+                    className="py-2.5 px-5 me-2 text-sm font-medium text-[#181E34] focus:outline-none bg-[#F0F1F4] rounded-md border border-gray-200 hover:bg-gray-100"
+                  >
+                    Settings
+                  </button>
+                  <button
+                    type="button"
+                    className="py-2.5 px-5 me-2 text-sm font-medium text-[#181E34] focus:outline-none bg-[#F0F1F4] rounded-md border border-gray-200 hover:bg-gray-100"
+                  >
+                    Control
+                  </button>
+                </>
+              )}
+              <button>
+                <a href="#" className="block">
+                  <Image
+                    src={rightarrow}
+                    alt="right arrow"
+                    width={10}
+                    height={10}
+                    className="mr-1"
+                  />
+                </a>
               </button>
             </div>
           </div>
