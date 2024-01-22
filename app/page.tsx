@@ -1,9 +1,13 @@
-import Image from "next/image";
+import Head from "@/app/components/Head/Head";
+import Devices from "@/app/components/Devices/Devices";
+import Footer from "@/app/components/Footer/Footer";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Hello world!</h1>
-    </main>
+    <div className="min-h-screen flex flex-col">
+      <Head />
+      <Devices />
+      <Footer />
+    </div>
   );
 }
